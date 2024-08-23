@@ -1,20 +1,41 @@
 import { StatusBar } from 'expo-status-bar'
 import { StyleSheet, Text, View } from 'react-native'
+import { Stack } from 'expo-router'
+//import { playbackService } from '@/constants/playbackService'
+//import { colors } from '@/constants/tokens'
+//import { useLogTrackPlayerState } from '@/hooks/useLogTrackPlayerState'
+//import { useSetupTrackPlayer } from '@/hooks/useSetupTrackPlayer'
+//import { SplashScreen, Stack } from 'expo-router'
+//import { useCallback } from 'react'
+//import { GestureHandlerRootView } from 'react-native-gesture-handler'
+import { SafeAreaProvider } from 'react-native-safe-area-context'
+//import TrackPlayer from 'react-native-track-player'
 
-export default function App() {
+
+const App = () => {
+	/*const handleTrackPlayerLoaded = useCallback(() => {
+		SplashScreen.hideAsync()
+	}, [])
+
+	useSetupTrackPlayer({
+		onLoad: handleTrackPlayerLoaded,
+	})
+
+	useLogTrackPlayerState()*/
+
 	return (
-		<View style={styles.container}>
-			<Text>Open up App.tsx to start working on your app!</Text>
-			<StatusBar style="auto" />
-		</View>
+		<SafeAreaProvider>
+			<RootNavigation />
+			<StatusBar style='auto' />
+		</SafeAreaProvider>
+	)
+
+}
+const RootNavigation = () => {
+	return(
+	<Stack>
+		<Stack.Screen name='{tabs}' options={{ headerShown: false}} />
+	</Stack>
 	)
 }
-
-const styles = StyleSheet.create({
-	container: {
-		flex: 1,
-		backgroundColor: '#fff',
-		alignItems: 'center',
-		justifyContent: 'center',
-	},
-})
+export default App
